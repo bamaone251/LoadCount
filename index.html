@@ -1,0 +1,102 @@
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Counter 0–50</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      background-color: #111;
+      font-family: sans-serif;
+    }
+
+    #counter {
+      height: 100%;
+      width: 100%;
+      background-color: #111;
+      color: #fff;
+      font-size: 90vw;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+    }
+
+    #counter:active {
+      background-color: #222;
+    }
+
+    #reset {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      opacity: 0.8;
+    }
+
+    #reset:hover {
+      opacity: 1;
+    }
+
+    audio {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      #counter {
+        font-size: 10vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="counter">0</button>
+  <button id="reset">Reset</button>
+
+  <!-- Gong sound -->
+  <audio id="gong" preload="auto">
+    <source src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg" type="audio/ogg">
+    <source src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    let count = 0;
+    const maxCount = 50;
+
+    const counterButton = document.getElementById('counter');
+    const resetButton = document.getElementById('reset');
+    const gongSound = document.getElementById('gong');
+
+    counterButton.addEventListener('click', () => {
+      if (count < maxCount) {
+        count++;
+        counterButton.textContent = count;
+        gongSound.currentTime = 0; // rewind
+        gongSound.play();
+      }
+    });
+
+    resetButton.addEventListener('click', (e) => {
+      e.stopPropagation(); // prevent counter from also incrementing
+      count = 0;
+      counterButton.textContent = count;
+    });
+  </script>
+</body>
+</html>
