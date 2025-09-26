@@ -59,27 +59,27 @@
 
     @media (min-width: 768px) {
       #counter {
-        font-size: 10vw;
+        font-size: 50vw;
       }
     }
   </style>
 </head>
 <body>
 	
-	<"LOAD COUNT">
+
   <button id="counter">0</button>
   <button id="reset">Reset</button>
 
   <!-- Gong sound -->
   <audio id="gong" preload="auto">
-    <source src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg" type="audio/ogg">
-    <source src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.mp3" type="audio/mpeg">
+    
+    <source src="./airhorn.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
   <script>
     let count = 0;
-    const maxCount = 50;
+    const maxCount = 100;
 
     const counterButton = document.getElementById('counter');
     const resetButton = document.getElementById('reset');
